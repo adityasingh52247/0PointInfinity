@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroPointInfinity AI</title>
+    <style>
+        :root {
+            --primary: #2A2F4F;
+            --secondary: #917FB3;
+            --accent: #E5BEEC;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(45deg, var(--primary), #1A1C30);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .neuro-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        #ai-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .chat-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .message {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 15px;
+            max-width: 70%;
+        }
+
+        .user-message {
+            background: var(--secondary);
+            margin-left: auto;
+        }
+
+        .ai-message {
+            background: var(--primary);
+            position: relative;
+        }
+
+        .model-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .model-card {
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .model-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="ai-canvas"></canvas>
+    
+    <main class="chat-container neuro-container">
+        <div class="model-selector">
+            <div class="model-card neuro-container" data-model="deepseek">
+                <h3>DeepSeek 7B</h3>
+                <p>General AI</p>
+            </div>
+            <div class="model-card neuro-container" data-model="vision">
+                <h3>ZeroVision</h3>
+                <p>Multimodal AI</p>
+            </div>
+        </div>
+
+        <div id="chat-history"></div>
+        
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Ask me anything..." 
+                   class="neuro-container" style="width: 100%; padding: 1rem;">
+            <button onclick="sendMessage()" class="neuro-container">Send</button>
+        </div>
+    </main>
+
+    <script>
+        // Basic Three.js neural network visualization
+        const canvas = document.getElementById('ai-canvas');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const ctx = canvas.getContext('2d');
+        let nodes = [];
+
+        class Node {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.connections = [];
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 5, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+                ctx.fill();
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            nodes.forEach(node => node.draw());
+            requestAnimationFrame(animate);
+        }
+
+        // Initialize network
+        for(let i = 0; i < 100; i++) {
+            nodes.push(new Node(
+                Math.random() * canvas.width,
+                Math.random() * canvas.height
+            ));
+        }
+        animate();
+
+        // Chat functionality
+        async function sendMessage() {
+            const input = document.getElementById('user-input');
+            const chatHistory = document.getElementById('chat-history');
+            
+            // Add user message
+            chatHistory.innerHTML += `
+                <div class="message user-message neuro-container">
+                    ${input.value}
+                </div>
+            `;
+
+            // Add loading indicator
+            const loading = document.createElement('div');
+            loading.className = 'message ai-message neuro-container';
+            loading.textContent = 'Thinking...';
+            chatHistory.appendChild(loading);
+
+            // Simulate AI response (Replace with actual API call)
+            setTimeout(() => {
+                loading.remove();
+                chatHistory.innerHTML += `
+                    <div class="message ai-message neuro-container">
+                        This is a simulated response. Actual API integration requires backend implementation.
+                        <div class="response-info">
+                            Model: ZeroPoint-7B | Tokens: 42 | Confidence: 92%
+                        </div>
+                    </div>
+                `;
+            }, 1000);
+
+            input.value = '';
+        }
+    </script>
+</body>
+</html>
