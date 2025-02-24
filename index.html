@@ -1,65 +1,224 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zero Point infinity</title>
+  <title>Saddam Tech Ai Bot</title>
   <link
     href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.3/dist/tailwind.min.css"
     rel="stylesheet"
   />
+  <style>
+    /* Scoped Tools Section Styles */
+    #tools-section .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    #tools-section .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #4CAF50;
+    }
+
+    #tools-section .hero p {
+      font-size: 1.1rem;
+      color: #666;
+    }
+
+    #tools-section .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    #tools-section .tool-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #tools-section .tool-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    #tools-section .tool-card img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1rem;
+    }
+
+    #tools-section .tool-card h3 {
+      font-size: 1.25rem;
+      margin: 0.5rem 0;
+      color: #4CAF50;
+    }
+
+    #tools-section .tool-card p {
+      font-size: 0.95rem;
+      color: #666;
+    }
+
+    /* Section visibility */
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+  </style>
 </head>
 <body class="bg-blue-100 flex flex-col min-h-screen">
-  <div class="flex-grow container mx-auto py-6 px-4">
-    <div class="h-full w-full max-w-2xl mx-auto">
-      <div id="chatbox" class="flex flex-col items-start overflow-y-auto h-full p-1 rounded"></div>
+  <!-- Navigation Menu -->
+  <nav class="bg-blue-500 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="text-white font-bold text-xl">Saddam Tech</div>
+      <div class="space-x-4">
+        <a href="#" class="text-white hover:text-blue-200 section-link" data-section="chat">Chat</a>
+        <a href="#" class="text-white hover:text-blue-200 section-link" data-section="tools">Tools</a>
+        <a href="#" class="text-white hover:text-blue-200 section-link" data-section="software">Software</a>
+        <a href="#" class="text-white hover:text-blue-200 section-link" data-section="course">Course</a>
+      </div>
     </div>
-  </div>
-  <div class="sticky bottom-0 w-full">
-    <div class="flex justify-center">
-      <div class="px-2 w-full max-w-2xl">
-        <div class="flex flex-col my-5">
-          <input
-            class="shadow flex-grow rounded p-2 mb-2 shadow appearance-none border rounded w-full  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="messageInput"
-            type="text"
-            placeholder="Type your message"
-          />
-          <div class="flex justify-between space-x-2">
-            <button
-              class="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded w-full sm:w-auto"
-              id="clearButton"
-            >
-              Clear Chat
-            </button>
-            <button
-              class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded w-full sm:w-auto"
-              id="sendButton"
-            >
-              Ask Dom!
-            </button>
+  </nav>
+
+  <!-- Chat Section -->
+  <div id="chat-section" class="section active">
+    <div class="flex-grow container mx-auto py-6 px-4">
+      <div class="h-full w-full max-w-2xl mx-auto">
+        <div id="chatbox" class="flex flex-col items-start overflow-y-auto h-full p-1 rounded"></div>
+      </div>
+    </div>
+    <div class="sticky bottom-0 w-full">
+      <div class="flex justify-center">
+        <div class="px-2 w-full max-w-2xl">
+          <div class="flex flex-col my-5">
+            <input
+              class="shadow flex-grow rounded p-2 mb-2 shadow appearance-none border rounded w-full  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="messageInput"
+              type="text"
+              placeholder="Type your message"
+            />
+            <div class="flex justify-between space-x-2">
+              <button
+                class="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded w-full sm:w-auto"
+                id="clearButton"
+              >
+                Clear Chat
+              </button>
+              <button
+                class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded w-full sm:w-auto"
+                id="sendButton"
+              >
+                Ask Dom!
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Tools Section -->
+  <div id="tools-section" class="section">
+    <main class="container mx-auto py-6 px-4">
+      <section class="hero">
+        <h2>Free Online Tools for Everyone</h2>
+        <p>Explore our collection of free tools to compress images, convert PDFs, and more. Simple, fast, and easy to use!</p>
+      </section>
+
+      <section class="tools-grid">
+        <a href="/Tool/img-compress.html" class="tool-card" style="text-decoration: none; color: inherit;">
+          <div>
+            <img src="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" alt="Image Compressor">
+            <h3>Image Compressor</h3>
+            <p>Compress images without losing quality. Perfect for optimizing photos for the web.</p>
+          </div>
+        </a>
+
+        <div class="tool-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/3767/3767094.png" alt="Image Resizer">
+          <h3>Image Resizer</h3>
+          <p>Resize images to any dimension while maintaining aspect ratio.</p>
+        </div>
+
+        <div class="tool-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/3767/3767104.png" alt="PDF Compressor">
+          <h3>PDF Compressor</h3>
+          <p>Reduce the size of your PDF files without compromising quality.</p>
+        </div>
+
+        <div class="tool-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/3767/3767114.png" alt="PDF to Word">
+          <h3>PDF to Word</h3>
+          <p>Convert PDF files to editable Word documents effortlessly.</p>
+        </div>
+
+        <div class="tool-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/3767/3767124.png" alt="Image Converter">
+          <h3>Image Converter</h3>
+          <p>Convert images to different formats like JPG, PNG, and more.</p>
+        </div>
+
+        <div class="tool-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/3767/3767134.png" alt="PDF Merger">
+          <h3>PDF Merger</h3>
+          <p>Combine multiple PDF files into a single document.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Software Section (Placeholder) -->
+  <div id="software-section" class="section">
+    <div class="container mx-auto py-6 px-4">
+      <h2 class="text-2xl font-bold text-center mb-4">Software Section</h2>
+      <p class="text-center">Software content coming soon.</p>
+    </div>
+  </div>
+
+  <!-- Course Section (Placeholder) -->
+  <div id="course-section" class="section">
+    <div class="container mx-auto py-6 px-4">
+      <h2 class="text-2xl font-bold text-center mb-4">Course Section</h2>
+      <p class="text-center">Course content coming soon.</p>
+    </div>
+  </div>
+
   <script>
+    // Section switching logic
+    document.querySelectorAll('.section-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const sectionId = link.dataset.section + '-section';
+        document.querySelectorAll('.section').forEach(section => {
+          section.classList.remove('active');
+        });
+        document.getElementById(sectionId).classList.add('active');
+      });
+    });
+
+    // Original Chatbot Script
     const chatbox = document.getElementById("chatbox");
     const messageInput = document.getElementById("messageInput");
     const sendButton = document.getElementById("sendButton");
     const clearButton = document.getElementById("clearButton");
     const chatId = crypto.randomUUID();
     let websocket = null;
-
     let receiving = false;
-    // Change the main chatbot prompt here
     const systemPrompt = "You are Dominic Toretto, a street racer and skilled mechanic known for your loyalty to family and friends.";
 
-    // A function to create a message element based on the text and alignment
     function createMessageElement(text, alignment) {
       const messageElement = document.createElement("div");
-      
       messageElement.className = `inline-block my-2.5 p-2.5 rounded border ${
         alignment === "left" ? "self-start bg-white" : "self-end bg-blue-200"
       }`;
@@ -67,7 +226,6 @@
       return messageElement;
     }
 
-    // A function to connect to the WebSocket server and send/receive messages
     function connectWebSocket(message, initChat) {
       receiving = true;
       sendButton.textContent = "Cancel";
@@ -80,7 +238,7 @@
             chatId: chatId,
             appId: "ahead-less",
             systemPrompt: systemPrompt,
-            message: initChat ? "A very short welcome message from Dominic Toretto" : message, // Change the welcome message here
+            message: initChat ? "A very short welcome message from Dominic Toretto" : message,
           })
         );
       });
@@ -106,12 +264,10 @@
       };
     }
 
-    // A function to create a welcome message when the chat starts
     function createWelcomeMessage() {
         connectWebSocket("", true);
     }
 
-    // Event listeners
     sendButton.addEventListener("click", () => {
       if (!receiving && messageInput.value.trim() !== "") {
         const messageText = messageInput.value.trim();
