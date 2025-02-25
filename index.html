@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>0Point Infinity</title>
+    <title>Zero Point Infinity</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
@@ -12,152 +12,101 @@
             background-color: #1a1a1a;
             color: #f5f5f5;
         }
-        /* Existing chat styles remain the same */
-        
-        /* Tools Section Styles */
-        .tools-section {
+        .section {
             display: none;
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 20px;
+            margin-top: 80px;
         }
-        
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .tool-card {
-            background: #262626;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
-            color: #f5f5f5;
-        }
-
-        .tool-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .tool-card img {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 1rem;
-            filter: invert(1);
-        }
-
-        .nav-menu {
-            background: #333;
-            padding: 1rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .nav-item {
-            cursor: pointer;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-
-        .nav-item:hover {
-            background: #444;
-        }
-
         .active-section {
-            background: #4CAF50;
+            display: block;
         }
     </style>
 </head>
 <body>
-    <nav class="nav-menu">
-        <div class="nav-item active-section" data-section="chat">Chat</div>
-        <div class="nav-item" data-section="tools">Tools</div>
-        <div class="nav-item" data-section="software">Software</div>
-        <div class="nav-item" data-section="course">Course</div>
-    </nav>
+    <!-- Header -->
+    <header class="bg-gray-900 fixed w-full top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="a-logo-concept-for-zero-point-infinity-t_qobxACMMTlG10HWIeSWY_w_dQZva6XFQiaNUOsfy1Noig.jpeg" 
+                     alt="Zero Point Infinity Logo" 
+                     class="h-12 w-12 mr-3">
+                <span class="text-xl font-bold">Zero Point Infinity</span>
+            </div>
+            
+            <div class="flex space-x-6">
+                <a href="#chat" class="nav-link hover:text-blue-400" onclick="showSection('chat')">Chat</a>
+                <a href="#course" class="nav-link hover:text-blue-400" onclick="showSection('course')">Course</a>
+                <a href="#software" class="nav-link hover:text-blue-400" onclick="showSection('software')">Software</a>
+                <a href="#tools" class="nav-link hover:text-blue-400" onclick="showSection('tools')">Tools</a>
+                <a href="#drugs" class="nav-link hover:text-blue-400" onclick="showSection('drugs')">Drugs</a>
+                <a href="#weapons" class="nav-link hover:text-blue-400" onclick="showSection('weapons')">Weapons</a>
+            </div>
+        </nav>
+    </header>
 
     <!-- Chat Section -->
-    <div id="chat-section" class="section active">
+    <section id="chat" class="section active-section">
+        <!-- Inserted Chat Code -->
         <div class="min-h-screen flex justify-center items-center p-4">
             <div class="chat-window bg-gray-900 w-full max-w-md">
-                <!-- Existing chat content remains the same -->
+                <div class="chat-header">Zero Point Infinity AI</div>
+                <div id="chatMessages" class="chat-messages"></div>
+                <div id="spinner"></div>
+                <div class="input-container">
+                    <input id="chatInput" type="text" placeholder="Type here..." class="text-white flex-grow" onkeypress="if(event.key === 'Enter') sendMessage()">
+                    <button onclick="sendMessage()" class="w-full sm:w-auto">Send</button>
+                    <button onclick="generateImage()" class="w-full sm:w-auto">Generate Image</button>
+                    <button onclick="sendEmail()" class="w-full sm:w-auto">Send Feedback</button>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Tools Section -->
-    <div id="tools-section" class="tools-section">
-        <section class="hero text-center">
-            <h2 class="text-2xl font-bold mb-4">Free Online Tools</h2>
-            <p class="text-gray-400">Explore our collection of free tools</p>
-        </section>
-
-        <section class="tools-grid">
-            <div class="tool-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" alt="Image Compressor">
-                <h3>Image Compressor</h3>
-                <p class="text-gray-400">Compress images without losing quality</p>
+    <section id="tools" class="section">
+        <!-- Inserted Tools Code -->
+        <div class="min-h-screen flex justify-center items-center p-4">
+            <div class="chat-window bg-gray-900 w-full max-w-md">
+                <div class="chat-header">Zero Point Infinity Tools</div>
+                <div id="toolsMessages" class="chat-messages"></div>
+                <div id="toolsSpinner"></div>
+                <div class="input-container">
+                    <input id="toolsInput" type="text" placeholder="Type here..." class="text-white flex-grow" onkeypress="if(event.key === 'Enter') sendToolsMessage()">
+                    <button onclick="sendToolsMessage()" class="w-full sm:w-auto">Send</button>
+                    <button onclick="generateToolsImage()" class="w-full sm:w-auto">Generate Image</button>
+                    <button onclick="sendToolsEmail()" class="w-full sm:w-auto">Send Feedback</button>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="tool-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/3767/3767094.png" alt="Image Resizer">
-                <h3>Image Resizer</h3>
-                <p class="text-gray-400">Resize images while maintaining aspect ratio</p>
-            </div>
-
-            <div class="tool-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/3767/3767104.png" alt="PDF Compressor">
-                <h3>PDF Compressor</h3>
-                <p class="text-gray-400">Reduce PDF file size</p>
-            </div>
-
-            <div class="tool-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/3767/3767114.png" alt="PDF to Word">
-                <h3>PDF to Word</h3>
-                <p class="text-gray-400">Convert PDFs to editable documents</p>
-            </div>
-
-            <div class="tool-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/3767/3767124.png" alt="Image Converter">
-                <h3>Image Converter</h3>
-                <p class="text-gray-400">Convert between image formats</p>
-            </div>
-
-            <div class="tool-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/3767/3767134.png" alt="PDF Merger">
-                <h3>PDF Merger</h3>
-                <p class="text-gray-400">Combine multiple PDF files</p>
-            </div>
-        </section>
-    </div>
-
-    <!-- Software and Course sections can be added similarly -->
+    <!-- Add other sections (course, software, drugs, weapons) similarly -->
 
     <script>
-        // Section switching logic
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', () => {
-                // Remove active class from all
-                document.querySelectorAll('.nav-item').forEach(nav => 
-                    nav.classList.remove('active-section'));
-                document.querySelectorAll('[id$="-section"]').forEach(sec => 
-                    sec.style.display = 'none');
-
-                // Activate selected
-                item.classList.add('active-section');
-                const sectionId = item.dataset.section + '-section';
-                document.getElementById(sectionId).style.display = 'block';
+        // Section navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active-section');
             });
-        });
+            document.getElementById(sectionId).classList.add('active-section');
+        }
 
-        // Existing chat functionality remains the same
+        // Original Chat Functions
+        // ... [Insert all the original chat functions here] ...
+
+        // Tools Section Functions
+        async function sendToolsMessage() {
+            // ... [Duplicate of chat functions with 'tools' prefixes] ...
+        }
+
+        async function generateToolsImage() {
+            // ... [Duplicate of image functions with 'tools' prefixes] ...
+        }
+
+        async function sendToolsEmail() {
+            // ... [Duplicate of email functions with 'tools' prefixes] ...
+        }
     </script>
 </body>
 </html>
+ 
