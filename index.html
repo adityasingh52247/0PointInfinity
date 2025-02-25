@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zero Point Infinity</title>
+    <title>0Point Infinity</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
@@ -12,101 +12,42 @@
             background-color: #1a1a1a;
             color: #f5f5f5;
         }
-        .section {
-            display: none;
-            padding: 20px;
-            margin-top: 80px;
+        .header-menu {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
         }
-        .active-section {
-            display: block;
+        .header-menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+        .header-menu a:hover {
+            color: #4CAF50;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="bg-gray-900 fixed w-full top-0 z-50 shadow-lg">
-        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="flex items-center">
-                <img src="a-logo-concept-for-zero-point-infinity-t_qobxACMMTlG10HWIeSWY_w_dQZva6XFQiaNUOsfy1Noig.jpeg" 
-                     alt="Zero Point Infinity Logo" 
-                     class="h-12 w-12 mr-3">
-                <span class="text-xl font-bold">Zero Point Infinity</span>
-            </div>
-            
-            <div class="flex space-x-6">
-                <a href="#chat" class="nav-link hover:text-blue-400" onclick="showSection('chat')">Chat</a>
-                <a href="#course" class="nav-link hover:text-blue-400" onclick="showSection('course')">Course</a>
-                <a href="#software" class="nav-link hover:text-blue-400" onclick="showSection('software')">Software</a>
-                <a href="#tools" class="nav-link hover:text-blue-400" onclick="showSection('tools')">Tools</a>
-                <a href="#drugs" class="nav-link hover:text-blue-400" onclick="showSection('drugs')">Drugs</a>
-                <a href="#weapons" class="nav-link hover:text-blue-400" onclick="showSection('weapons')">Weapons</a>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Chat Section -->
-    <section id="chat" class="section active-section">
-        <!-- Inserted Chat Code -->
-        <div class="min-h-screen flex justify-center items-center p-4">
-            <div class="chat-window bg-gray-900 w-full max-w-md">
-                <div class="chat-header">Zero Point Infinity AI</div>
-                <div id="chatMessages" class="chat-messages"></div>
-                <div id="spinner"></div>
-                <div class="input-container">
-                    <input id="chatInput" type="text" placeholder="Type here..." class="text-white flex-grow" onkeypress="if(event.key === 'Enter') sendMessage()">
-                    <button onclick="sendMessage()" class="w-full sm:w-auto">Send</button>
-                    <button onclick="generateImage()" class="w-full sm:w-auto">Generate Image</button>
-                    <button onclick="sendEmail()" class="w-full sm:w-auto">Send Feedback</button>
-                </div>
-            </div>
-        </div>
+    <div class="header-menu">
+        <a href="#tools">Tools</a>
+        <a href="#software">Software</a>
+        <a href="#course">Course</a>
+    </div>
+    
+    <section id="tools">
+        <iframe src="tools.html" width="100%" height="800px" style="border:none;"></iframe>
     </section>
 
-    <!-- Tools Section -->
-    <section id="tools" class="section">
-        <!-- Inserted Tools Code -->
-        <div class="min-h-screen flex justify-center items-center p-4">
-            <div class="chat-window bg-gray-900 w-full max-w-md">
-                <div class="chat-header">Zero Point Infinity Tools</div>
-                <div id="toolsMessages" class="chat-messages"></div>
-                <div id="toolsSpinner"></div>
-                <div class="input-container">
-                    <input id="toolsInput" type="text" placeholder="Type here..." class="text-white flex-grow" onkeypress="if(event.key === 'Enter') sendToolsMessage()">
-                    <button onclick="sendToolsMessage()" class="w-full sm:w-auto">Send</button>
-                    <button onclick="generateToolsImage()" class="w-full sm:w-auto">Generate Image</button>
-                    <button onclick="sendToolsEmail()" class="w-full sm:w-auto">Send Feedback</button>
-                </div>
-            </div>
-        </div>
+    <section id="software">
+        <h2>Software Section</h2>
+        <p>Coming soon...</p>
     </section>
-
-    <!-- Add other sections (course, software, drugs, weapons) similarly -->
-
-    <script>
-        // Section navigation
-        function showSection(sectionId) {
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active-section');
-            });
-            document.getElementById(sectionId).classList.add('active-section');
-        }
-
-        // Original Chat Functions
-        // ... [Insert all the original chat functions here] ...
-
-        // Tools Section Functions
-        async function sendToolsMessage() {
-            // ... [Duplicate of chat functions with 'tools' prefixes] ...
-        }
-
-        async function generateToolsImage() {
-            // ... [Duplicate of image functions with 'tools' prefixes] ...
-        }
-
-        async function sendToolsEmail() {
-            // ... [Duplicate of email functions with 'tools' prefixes] ...
-        }
-    </script>
+    
+    <section id="course">
+        <h2>Course Section</h2>
+        <p>Coming soon...</p>
+    </section>
 </body>
 </html>
- 
