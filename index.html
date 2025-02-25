@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced AI Chatbot</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.3/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -12,7 +12,8 @@
             color: #f5f5f5;
         }
         .chat-window {
-            max-width: 400px;
+            max-width: 100%;
+            width: 400px;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 0 15px rgba(0,0,0,0.5);
@@ -36,13 +37,16 @@
             border-radius: 8px;
             max-width: 80%;
             animation: slide-in 0.3s ease-in-out;
+            word-wrap: break-word;
         }
         .input-container {
             display: flex;
+            flex-wrap: wrap;
             background-color: #333;
         }
         .input-container input {
             flex: 1;
+            min-width: 0;
             padding: 10px;
             outline: none;
             border: none;
@@ -55,13 +59,14 @@
             border: none;
             cursor: pointer;
             transition: background-color 0.2s ease;
+            white-space: nowrap;
         }
         .input-container button:hover {
             background-color: #555;
         }
         #spinner {
             display: none;
-            margin: 10px 0;
+            margin: 10px auto;
             border: 4px solid #f3f3f3;
             border-top: 4px solid #444;
             border-radius: 50%;
@@ -84,13 +89,28 @@
             }
         }
     </style>
+</head>
+<body>
+    <div class="min-h-screen flex justify-center items-center p-4">
+        <div class="chat-window bg-gray-900 w-full max-w-md">
+            <div class="chat-header">AI Chatbot</div>
+            <div id="chatMessages" class="chat-messages"></div>
+            <div id="spinner"></div>
+            <div class="input-container">
+                <input id="chatInput" type="text" placeholder="Type here..." class="text-white flex-grow" onkeypress="if(event.key === 'Enter') sendMessage()">
+                <button onclick="sendMessage()" class="w-full sm:w-auto">Send</button>
+                <button onclick="generateImage()" class="w-full sm:w-auto">Generate Image</button>
+                <button onclick="sendEmail()" class="w-full sm:w-auto">Send Email</button>
+            </div>
+        </div>
+    </div>
     <script>
         async function sendMessage() {
             const inputField = document.getElementById('chatInput');
             const messagesContainer = document.getElementById('chatMessages');
             const spinner = document.getElementById('spinner');
 
-            if (inputField.value) {
+            if (inputField.value.trim()) {
                 const userMessage = document.createElement('div');
                 userMessage.className = 'message bg-blue-500 text-right ml-auto';
                 userMessage.textContent = inputField.value;
@@ -133,7 +153,7 @@
             const messagesContainer = document.getElementById('chatMessages');
             const spinner = document.getElementById('spinner');
 
-            if (inputField.value) {
+            if (inputField.value.trim()) {
                 const userMessage = document.createElement('div');
                 userMessage.className = 'message bg-blue-500 text-right ml-auto';
                 userMessage.textContent = `Generate an image for: "${inputField.value}"`;
@@ -154,11 +174,14 @@
                     spinner.style.display = 'none';
 
                     if (data.status === 'success') {
+                        const imageContainer = document.createElement('div');
+                        imageContainer.className = 'message bg-gray-700 text-left';
                         const image = document.createElement('img');
                         image.src = data.imageUrl;
                         image.alt = "Generated Image";
                         image.className = 'max-w-full h-auto mt-2';
-                        messagesContainer.appendChild(image);
+                        imageContainer.appendChild(image);
+                        messagesContainer.appendChild(imageContainer);
                     } else {
                         handleApiError();
                     }
@@ -177,7 +200,7 @@
             const messagesContainer = document.getElementById('chatMessages');
             const spinner = document.getElementById('spinner');
 
-            if (inputField.value) {
+            if (inputField.value.trim()) {
                 const userMessage = document.createElement('div');
                 userMessage.className = 'message bg-blue-500 text-right ml-auto';
                 userMessage.textContent = `Send an email with subject: "${inputField.value}"`;
@@ -223,20 +246,5 @@
             messagesContainer.appendChild(errorMsg);
         }
     </script>
-</head>
-<body>
-    <div class="min-h-screen flex justify-center items-center">
-        <div class="chat-window bg-gray-900">
-            <div class="chat-header">AI Chatbot</div>
-            <div id="chatMessages" class="chat-messages"></div>
-            <div id="spinner"></div>
-            <div class="input-container">
-                <input id="chatInput" type="text" placeholder="Type here..." class="text-white" onkeypress="if(event.key === 'Enter') sendMessage()">
-                <button onclick="sendMessage()">Send</button>
-                <button onclick="generateImage()">Generate Image</button>
-                <button onclick="sendEmail()">Send Email</button>
-            </div>
-        </div>
-    </div>
 </body>
 </html>
